@@ -1,0 +1,12 @@
+{
+  "name": "js-core-userbaev",
+  "version": "1.0.0",
+  "description": "Lab 4 — JavaScript core: functions, closures, classes, unit tests",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.0"
+  }
+}
