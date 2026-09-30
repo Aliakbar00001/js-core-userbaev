@@ -1,43 +1,45 @@
 # js-core-userbaev
 
-Lab 4 — чистый JavaScript: функции высшего порядка, замыкания, классы, юнит-тесты.
+Lab 4 — pure JavaScript: higher-order functions, closures, classes, unit tests.
 
-## Как запустить тесты
+## How to run the tests
 
 ```bash
 npm i
 npm test
 ```
 
-Требуется Node.js LTS (`node -v`, `npm -v` перед началом).
+Requires Node.js LTS (`node -v`, `npm -v` before you start).
 
-## Структура
+## Structure
 
 ```
-src/functions.js   — unique, groupBy, chunk, deepClone, memoize, counter
-src/Store.js        — классы Store и SortedStore
-tests/              — тесты на Vitest
+src/functions.js — unique, groupBy, chunk, deepClone, memoize, counter
+src/Store.js — Store and SortedStore classes
+tests/ — Vitest tests
 ```
+
 
 ## Closures in my code
 
-Замыкания использованы в двух функциях. `memoize(fn)` создаёт переменную
-`cache` (Map) один раз при вызове, а возвращаемая внутренняя функция
-запоминает эту переменную между вызовами — так кэш не теряется и не виден
-снаружи напрямую. `counter(start)` работает похоже: переменная `value`
-"живёт" внутри замыкания, и методы `inc`, `dec`, `value` — это единственный
-способ её изменить или прочитать. Каждый вызов `counter()` создаёт новую,
-независимую переменную `value`, поэтому два счётчика не мешают друг другу.
-Замыкание работает потому, что JavaScript не удаляет переменные внешней
-функции, пока на них есть ссылка из вложенной функции — движок держит их в
-памяти, даже когда внешняя функция уже завершила выполнение.
+Closures are used in two functions. `memoize(fn)` creates a `cache` variable
+(a Map) once when called, and the returned inner function remembers this
+variable between calls — so the cache is not lost and is not directly
+visible from outside. `counter(start)` works similarly: the `value`
+variable "lives" inside the closure, and the `inc`, `dec`, `value` methods
+are the only way to change or read it. Each call to `counter()` creates a
+new, independent `value` variable, so two counters do not interfere with
+each other. The closure works because JavaScript does not delete the outer
+function's variables while a reference to them still exists from the inner
+function — the engine keeps them in memory even after the outer function
+has already finished running.
 
-## Скриншот пройденных тестов
+## Screenshot of passing tests
 
-_(вставить сюда скриншот терминала после `npm test`, где все тесты зелёные)_
+![Tests passing](tests-screenshot.png)
 
-## AI-инструменты
+## AI tools
 
-Использовал Claude (Anthropic) для написания части кода и тестов. Перед
-сдачей разобрался в реализации каждой функции и класса, чтобы уметь
-объяснить на защите 01.10.
+Used Claude (Anthropic) to write part of the code and tests. Before
+submitting, I went through the implementation of every function and class
+so I can explain it myself.
